@@ -24,10 +24,6 @@ export default {
   props: {
     organiser: Object
   },
-
-  methods: {
-
-  }
 }
 
 </script>

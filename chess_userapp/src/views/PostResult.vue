@@ -47,10 +47,6 @@ export default {
     Header
   },
 
-  props: {
-    
-  },
-
   data() {
     return {
       form: {
@@ -74,14 +70,14 @@ export default {
 
   methods: {
     ...mapActions([
-      'addResult',
+      'postResult',
     ]),
 
     onSubmit(e) {
       e.preventDefault();
       this.form.userId = this.loggedUserId.toString()
       this.form.tournamentId = this.$route.params.id.toString()
-      this.addResult(this.form);
+      this.postResult(this.form);
       this.$router.back();
     }
   }

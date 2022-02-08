@@ -46,8 +46,6 @@
       }
     },
 
-    // TODO Ovde treba dodati metode upravljanje paginacijom
-
     mounted() {
 
     },

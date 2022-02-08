@@ -3,7 +3,7 @@
  <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="results.length"
+      :total-rows="resultsToShow.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
@@ -12,7 +12,7 @@
       id="image-table"
       hover
       fixed
-      :items="results"
+      :items="resultsToShow"
       :fields="fields"
       small
       :per-page="perPage"
@@ -22,11 +22,11 @@
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="results.length"
+      :total-rows="resultsToShow.length"
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
-    <b-button v-on:click="accessResultPost()">Dodaj rezultat</b-button>
+    <b-button v-on:click="accessResultPosting()">Dodaj rezultat</b-button>
   </div>
 
 </template>
@@ -47,23 +47,21 @@
       }
     },
 
-    // TODO Ovde treba dodati metode upravljanje paginacijom
-
-    mounted() {
-
-    },
-
     computed: {
       ...mapState([
         'results'
-      ])
+      ]),
+
+      resultsToShow: function() {
+        return this.results.filter(result => result.tournamentId == this.$route.params.id);
+      }
     },
 
     methods: {
       rowClicked(record, index) {
         this.$router.push({ name: 'SingleResult', params: { id: record.id} });
       },
-      accessResultPost(){
+      accessResultPosting(){
         this.$router.push({ name: 'PostResult', params: { id: this.$route.params.id} });
       }
     }
