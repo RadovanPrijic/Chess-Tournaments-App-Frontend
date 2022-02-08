@@ -85,6 +85,10 @@ export default new Vuex.Store({
       state.organiser = organiser;
     },
 
+    setTournamentById(state, tournament) {
+      state.tournament = tournament;
+    },
+
     setTournamentByOrganiserId(state, orgId) {
       state.tournament = ''
       state.tournaments.forEach(tournament => {
@@ -186,7 +190,18 @@ export default new Vuex.Store({
         },
       })
           .then( obj => obj.json() )
-          .then( res => commit('setOrganiserById', res) );
+          .then( res => commit('setTournamentById', res) );
+    },
+
+    fetchTournamentById({ commit }, id){
+      fetch('http://127.0.0.1:8500/admin/tournaments/' + id,{
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        },
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('setTournamentById', res) );
     },
 
     fetchTournamentByOrganiserId({ commit }, orgId){
