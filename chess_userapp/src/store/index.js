@@ -98,7 +98,7 @@ export default new Vuex.Store({
   actions: {
 
     register({ commit }, obj) {
-      fetch('http://127.0.0.1:9000/register', { //TODO mozda promeniti rutu u api_register
+      fetch('http://127.0.0.1:9000/auth_register', { //TODO mozda promeniti rutu u api_register
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ export default new Vuex.Store({
     },
 
     login({ commit }, obj) {
-      fetch('http://127.0.0.1:9000/login', { //TODO mozda promeniti rutu u api_login
+      fetch('http://127.0.0.1:9000/auth_login', { //TODO mozda promeniti rutu u api_login
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
