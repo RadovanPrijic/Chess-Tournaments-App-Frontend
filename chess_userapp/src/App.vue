@@ -9,7 +9,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/">Početna stranica</b-nav-item>
             <b-nav-item-dropdown text="Sekcije">
               <b-nav-item to="/tournaments">Turniri</b-nav-item>
               <b-nav-item to="/organisers">Organizatori</b-nav-item>
