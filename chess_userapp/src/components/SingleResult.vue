@@ -6,7 +6,7 @@
         <ul>
             <li>Participantov broj: {{ result.userId }}</li>
             <li>Osvojeno mesto: {{ result.ranking }}</li>
-            <li>Nagrada (u dolarima): {{ result.priye }}</li>
+            <li>Nagrada (u dolarima): {{ result.prize }}</li>
             <li>Država: {{ result.country_represented }}</li>
             <li>Promena ELO rejtinga: {{ result.elo_change }}</li>
             <li>Trener: {{ result.coach }}</li>

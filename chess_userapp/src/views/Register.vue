@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header subtitle="Kreacija korisničkog naloga"/>
+    <Header subtitle="Registracija"/>
 
     <b-form @submit="onSubmit">
 
