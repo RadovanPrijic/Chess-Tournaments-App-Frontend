@@ -2,7 +2,7 @@
 
   <div>
     <Header :subtitle="subtitle"/>
-    <SingleOrganiser v-if="tournament" :tournament="tournament"/>
+    <SingleTournament v-if="tournament" :tournament="tournament"/>
   </div>
 
 </template>
@@ -26,12 +26,14 @@
         subtitle: 'Turnir'
       }
     },
-    
-    methods: {
+
+    computed: {
       ...mapState([
         'tournament'
-      ]),
-
+      ])
+    },
+    
+    methods: {
       ...mapActions([
         'fetchTournamentById'
       ])

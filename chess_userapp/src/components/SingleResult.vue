@@ -4,7 +4,6 @@
     <div>
         <div class="art">
         <ul>
-            <li>: {{ organiser.name }}</li>
             <li>Participantov broj: {{ result.userId }}</li>
             <li>Osvojeno mesto: {{ result.ranking }}</li>
             <li>Nagrada (u dolarima): {{ result.priye }}</li>

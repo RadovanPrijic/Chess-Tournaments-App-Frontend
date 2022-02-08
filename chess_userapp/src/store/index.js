@@ -190,7 +190,7 @@ export default new Vuex.Store({
         },
       })
           .then( obj => obj.json() )
-          .then( res => commit('setTournamentById', res) );
+          .then( res => commit('setOrganiserById', res) );
     },
 
     fetchTournamentById({ commit }, id){

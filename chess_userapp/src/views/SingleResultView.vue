@@ -2,7 +2,7 @@
 
   <div>
     <Header :subtitle="subtitle"/>
-    <SingleOrganiser v-if="result" :result="result"/>
+    <SingleResult v-if="result" :result="result"/>
   </div>
 
 </template>
@@ -26,12 +26,14 @@
         subtitle: 'Rezultat'
       }
     },
-    
-    methods: {
+
+    computed: {
       ...mapState([
         'result'
-      ]),
-
+      ])
+    },
+    
+    methods: {
       ...mapActions([
         'fetchResultById'
       ])

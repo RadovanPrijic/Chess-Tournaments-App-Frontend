@@ -26,14 +26,16 @@
         subtitle: 'Organizator'
       }
     },
-    
-    methods: {
+
+    computed: {
       ...mapState([
         'organiser'
-      ]),
-
+      ])
+    },
+    
+    methods: {
       ...mapActions([
-        'getOrganiserById'
+        'fetchOrganiserById'
       ])
     },
 
