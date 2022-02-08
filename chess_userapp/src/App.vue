@@ -11,9 +11,9 @@
           <b-navbar-nav>
             <b-nav-item to="/">Početna stranica</b-nav-item>
             <b-nav-item-dropdown text="Sekcije">
-              <b-nav-item to="/tournaments">Turniri</b-nav-item>
-              <b-nav-item to="/organisers">Organizatori</b-nav-item>
-              <b-nav-item to="/results">Rezultati</b-nav-item>
+              <b-dropdown-item to="/tournaments">Turniri</b-dropdown-item>
+              <b-dropdown-item to="/organisers">Organizatori</b-dropdown-item>
+              <b-dropdown-item to="/results">Rezultati</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
 
