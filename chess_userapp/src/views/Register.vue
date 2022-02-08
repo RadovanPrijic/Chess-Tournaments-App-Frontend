@@ -29,7 +29,7 @@
       </b-form-group>
 
       <b-form-group label="Lozinka:" label-for="password">
-        <b-form-input id="password" v-model="form.password" type="password" required></b-form-input>
+        <b-form-input id="password" v-model="form.password" type="password" placeholder="Unesite lozinku" required></b-form-input>
       </b-form-group>
 
       <br>

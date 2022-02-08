@@ -26,7 +26,7 @@
       :per-page="perPage"
       aria-controls="image-table"
     ></b-pagination>
-    <b-button v-on:click="accessBookPost()">Dodaj rezultat</b-button>
+    <b-button v-on:click="accessResultPost()">Dodaj rezultat</b-button>
   </div>
 
 </template>
@@ -63,7 +63,7 @@
       rowClicked(record, index) {
         this.$router.push({ name: 'SingleResult', params: { id: record.id} });
       },
-      goToAddBook(){
+      accessResultPost(){
         this.$router.push({ name: 'PostResult', params: { id: this.$route.params.id} });
       }
     }
