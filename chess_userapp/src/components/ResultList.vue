@@ -40,7 +40,7 @@
 
     data() {
       return {
-        fields: ['userId', 'ranking', 'prize', 'country', 'elo_change', 'coach'],
+        fields: ['id', 'tournamentId', 'userId', 'ranking', 'prize', 'country_represented', 'elo_change', 'coach'],
         items: [],
         currentPage: 1,
         perPage: 10
@@ -59,7 +59,7 @@
 
     methods: {
       rowClicked(record, index) {
-        this.$router.push({ name: 'SingleResult', params: { id: record.id} });
+        this.$router.push({ name: 'SingleResult', params: { id: record.id, tournamentId: record.tournamentId} });
       },
       accessResultPosting(){
         this.$router.push({ name: 'PostResult', params: { id: this.$route.params.id} });

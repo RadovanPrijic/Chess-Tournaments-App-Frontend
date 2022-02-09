@@ -46,7 +46,6 @@
 
       onSubmit(e) {
         e.preventDefault();
-
         this.login(this.form);
         this.$router.push({ name: 'Home' });
       }

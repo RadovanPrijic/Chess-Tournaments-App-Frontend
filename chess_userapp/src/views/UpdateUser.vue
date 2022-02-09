@@ -1,7 +1,7 @@
 <template>
 
-  <div id="app">
-    <Header subtitle="Registracija"/>
+  <div id="app"  v-if="this.token">
+    <Header subtitle="Izmena korisničkih parametara"/>
 
     <b-form @submit="onSubmit">
 
@@ -38,49 +38,61 @@
     </b-form>
   </div>
 
+  <p v-else>Nemate pravo na ovu izmenu.</p>
+  
 </template>
 
 <script>
 
-  import Header from '@/components/Header.vue';
-  import { mapActions } from 'vuex';
+import Header from '@/components/Header.vue';
+import {mapActions, mapState} from "vuex";
 
-  export default {
-    name: 'Register',
-    
-    components: {
-      Header
-    },
 
-    data() {
-      return {
-        form: {
-          first_name: '',
-          last_name: '',
-          birth_date: '',
-          country_of_residence: '',
-          elo_rating: '',
-          username: '',
-          password: '',
-          admin: "false",
-          moderator: "false",
-          player: "true"
-        }
-      }
-    },
+export default {
+  name: 'UpdateUser',
 
-    methods: {
-      ...mapActions([
-        'register'
-      ]),
+  components: {
+    Header
+  },
 
-      onSubmit(e) {
-        e.preventDefault();
-        this.register(this.form);
-        this.$router.push({ name: 'Home' });
+  data() {
+    return {
+      form: {
+        first_name: '',
+        last_name: '',
+        birth_date: '',
+        country_of_residence: '',
+        elo_rating: '',
+        username: '',
+        password: '',
+        admin: "false",
+        moderator: "false",
+        player: "true"
       }
     }
+  },
+
+  computed: {
+    ...mapState([
+      'token',
+      'loggedUserId'
+    ]),
+  },
+
+  methods: {
+    ...mapActions([
+      'updateUser',
+    ]),
+
+    onSubmit(e) {
+      e.preventDefault();
+      this.form.id = this.loggedUserId;
+      this.updateUser(this.form);
+      this.$router.push({ name: 'Home' });
+    }
   }
+}
+
 </script>
 
 <style scoped>

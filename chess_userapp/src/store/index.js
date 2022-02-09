@@ -28,6 +28,7 @@ export default new Vuex.Store({
 
     setLoggedUserId(state, userId){
       state.loggedUserId = userId;
+      localStorage.loggedUserId = userId;
     },
 
     setTournaments(state, tournaments) {
@@ -53,11 +54,6 @@ export default new Vuex.Store({
     postResult(state, result) {
       state.result = result;
     },
-
-    /*
-    addSingleResult(state, result){
-      state.results.push(result);
-    }, */
   },
 
   actions: {
@@ -165,21 +161,55 @@ export default new Vuex.Store({
           .then( res => commit('postResult', res) );
     },
 
-    postResult(obj){
-        fetch('http://127.0.0.1:8500/admin/results', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json' ,
-            'authorization': `Bearer ${localStorage.token}`
-          },
-          body: JSON.stringify(obj)
-        }).then( res => res.json() )
-            .then( el => {
+    postResult({ commit }, obj){
+      fetch('http://127.0.0.1:8500/admin/results', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' ,
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(obj)
+      })
+      .then( res => res.json() )
+          .then( el => {
               if (el.msg) {
-                alert(el.msg, 'Došlo je do greško kod dodavanja novog rezultata.');
-              }
-            });
-    }
+              alert(el.msg, 'Došlo je do greško kod dodavanja novog rezultata.');
+            }
+          });
+    },
+
+    updateResult({ commit }, obj){
+      fetch('http://127.0.0.1:8500/admin/results/' + obj.id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json' ,
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(obj)
+      }).then( res => res.json() )
+          .then( el => {
+            if (el.msg) {
+              alert(el.msg, 'Došlo je do greško kod izmene rezultata.');
+            }
+          });
+    },
+
+    updateUser({ commit }, obj){
+      fetch('http://127.0.0.1:8500/admin/users/' + obj.id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json' ,
+          'authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(obj)
+      }).then( res => res.json() )
+          .then( el => {
+            if (el.msg) {
+              alert(el.msg, 'Došlo je do greško kod izmene korisničkih parametara.');
+            }
+          });
+    },
+
   },
 
   modules: {

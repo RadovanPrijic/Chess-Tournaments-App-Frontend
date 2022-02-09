@@ -10,6 +10,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item to="/">Početna stranica</b-nav-item>
+            <b-nav-item to="/updateuser">Izmena korisničkih parametara</b-nav-item>
             <b-nav-item-dropdown text="Sekcije">
               <b-dropdown-item to="/tournaments">Turniri</b-dropdown-item>
               <b-dropdown-item to="/organisers">Organizatori</b-dropdown-item>
@@ -44,7 +45,8 @@
 
     computed: {
       ...mapState([
-        'token'
+        'token',
+        'loggedUserId'
       ])
     },
 
@@ -52,12 +54,16 @@
       if (localStorage.token) {
         this.setToken(localStorage.token);
       }
+      if(localStorage.loggedUserId){
+        this.setLoggedUserId(localStorage.loggedUserId);
+      }
     },
 
     methods: {
       ...mapMutations([
         'setToken',
-        'removeToken'
+        'removeToken',
+        'setLoggedUserId'
       ]),
 
       search(e) {
@@ -66,14 +72,9 @@
 
       logout() {
         this.removeToken();
+        this.$router.push({ name: 'Home' });
       }
     },
-    /*  
-    sockets: {
-      error(err) {
-        alert(err);
-      }
-    } */
   }
 
 </script>

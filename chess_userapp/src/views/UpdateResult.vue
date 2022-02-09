@@ -1,7 +1,7 @@
 <template>
 
   <div id="app"  v-if="this.token">
-    <Header subtitle="Objava novog rezultata"/>
+    <Header subtitle="Izmena rezultata"/>
 
     <b-form @submit="onSubmit">
 
@@ -30,7 +30,7 @@
     </b-form>
 
   </div>
-  <p v-else>Nemate pravo na ovaj unos.</p>
+  <p v-else>Nemate pravo na ovu izmenu.</p>
   
 </template>
 
@@ -41,7 +41,7 @@ import {mapActions, mapState} from "vuex";
 
 
 export default {
-  name: 'PostResult',
+  name: 'UpdateResult',
 
   components: {
     Header
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       form: {
+        id: '',
         userId: '',
         tournamentId: '',
         ranking: '',
@@ -70,14 +71,15 @@ export default {
 
   methods: {
     ...mapActions([
-      'postResult',
+      'updateResult',
     ]),
 
     onSubmit(e) {
       e.preventDefault();
+      this.form.id = this.$route.params.id.toString();
+      this.form.tournamentId = this.$route.params.tournamentId;
       this.form.userId = this.loggedUserId;
-      this.form.tournamentId = this.$route.params.id;
-      this.postResult(this.form);
+      this.updateResult(this.form);
       this.$router.back();
     }
   }

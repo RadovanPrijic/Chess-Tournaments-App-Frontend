@@ -7,10 +7,11 @@ import Tournament from '@/views/Tournament.vue';
 import Organiser from '@/views/Organiser.vue';
 import Result from '@/views/Result.vue';
 import PostResult from "@/views/PostResult.vue";
+import UpdateResult from "@/views/UpdateResult.vue";
+import UpdateUser from "@/views/UpdateUser.vue";
 import SingleTournamentView from '@/views/SingleTournamentView.vue';
 import SingleOrganiserView from "@/views/SingleOrganiserView.vue";
 import SingleResultView from "@/views/SingleResultView.vue";
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -73,6 +74,18 @@ const routes = [
     path: '/postresult/:id',
     name: 'PostResult',
     component: PostResult
+  },
+
+  {
+    path: '/updateresult',
+    name: 'UpdateResult',
+    component: UpdateResult
+  },
+
+  {
+    path: '/updateuser',
+    name: 'UpdateUser',
+    component: UpdateUser
   },
 
 ]
