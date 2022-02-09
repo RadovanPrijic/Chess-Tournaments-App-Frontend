@@ -6,11 +6,11 @@
     <b-form @submit="onSubmit">
 
       <b-form-group label="Osvojeno mesto:" label-for="ranking">
-        <b-form-input id="ranking" v-model="form.ranking" type="number" placeholder="Unesite osvojeno mesto" required></b-form-input>
+        <b-form-input id="ranking" v-model="form.ranking" type="number" placeholder="Unesite osvojeno mesto" min="1" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Nagrada (u dolarima):" label-for="prize">
-        <b-form-input id="prize" v-model="form.prize" type="number" step="0.01" placeholder="Unesite osvojeni iznos" required></b-form-input>
+        <b-form-input id="prize" v-model="form.prize" type="number" step="0.01" placeholder="Unesite osvojeni iznos" min="0" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Država:" label-for="country_represented">
@@ -18,7 +18,7 @@
       </b-form-group>
 
       <b-form-group label="Promena ELO rejtinga:" label-for="elo_change">
-        <b-form-input id="elo_change" v-model="form.elo_change" type="number" placeholder="Unesite promenu ELO rejtinga" required></b-form-input>
+        <b-form-input id="elo_change" v-model="form.elo_change" type="number" placeholder="Unesite promenu ELO rejtinga" max="100" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Trener:" label-for="coach">
@@ -86,5 +86,14 @@ export default {
 </script>
 
 <style scoped>
+
+  input:invalid {
+    border: 2px solid red;
+  }
+
+  
+  input:valid {
+    border: 2px solid green;
+  }
 
 </style>

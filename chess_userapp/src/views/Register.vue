@@ -22,15 +22,15 @@
       </b-form-group>
 
       <b-form-group label="ELO rejting:" label-for="elo_rating">
-        <b-form-input id="elo_rating" v-model="form.elo_rating" type="number" placeholder="Unesite ELO rejting" required></b-form-input>
+        <b-form-input id="elo_rating" v-model="form.elo_rating" type="number" placeholder="Unesite ELO rejting" min="100" max="3000" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Korisničko ime:" label-for="username">
-        <b-form-input id="username" v-model="form.username" placeholder="Unesite korisničko ime" required></b-form-input>
+        <b-form-input id="username" v-model="form.username" placeholder="Unesite korisničko ime" min="6" max="20" required></b-form-input>
       </b-form-group>
 
       <b-form-group label="Lozinka:" label-for="password">
-        <b-form-input id="password" v-model="form.password" type="password" placeholder="Unesite lozinku" required></b-form-input>
+        <b-form-input id="password" v-model="form.password" type="password" placeholder="Unesite lozinku" min="6" max="20" required></b-form-input>
       </b-form-group>
 
       <br>
@@ -84,5 +84,14 @@
 </script>
 
 <style scoped>
+
+  input:invalid {
+    border: 2px solid red;
+  }
+
+  
+  input:valid {
+    border: 2px solid green;
+  }
 
 </style>
